@@ -1,9 +1,6 @@
 import { defineSource } from '@jaspers-ai/sdk'
 import { z } from 'zod'
 
-// The published SDK types a source's arguments as unknown, since from there it cannot see the
-// schema beside them. Each run names what its own input parses to.
-type Args = Record<string, any>
 
 // The CFTC's Commitments of Traders, from its public reporting site. No key. Who is positioned
 // where in futures: what the funds hold against what the commercial hedgers hold.
@@ -20,8 +17,7 @@ export const positions = defineSource({
     market: z.string().describe('Part of the contract name, like GOLD or E-MINI S&P 500.'),
     limit: z.number().int().min(1).max(2000).default(104).describe('Weeks to read, newest first. 104 is two years.'),
   }),
-  async run(raw, ctx) {
-    const { market, limit } = raw as Args
+  async run({ market, limit }, ctx) {
     const where = `upper(market_and_exchange_names) like upper('%${market.replace(/'/g, "''")}%')`
     // Several contracts match a name, and the rows are picked apart below, so ask for enough that
     // the one that is kept still has `limit` weeks of its own.

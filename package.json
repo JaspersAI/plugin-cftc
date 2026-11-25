@@ -1,7 +1,7 @@
 {
   "name": "cftc",
-  "version": "1.0.0",
-  "description": "Commitments of Traders: weekly futures positioning by trader kind. No key.",
+  "version": "1.1.0",
+  "description": "CFTC Commitments of Traders: Legacy, Disaggregated (Managed Money), and Traders in Financial Futures (TFF). No key.",
   "license": "MIT",
   "private": true,
   "type": "module",
@@ -10,16 +10,31 @@
     "url": "git+https://github.com/JaspersAI/plugin-cftc.git"
   },
   "jaspers": {
-    "sdk": "0.3.0"
+    "sdk": "0.8.0",
+    "title": "CFTC Commitments of Traders (Legacy, Disagg & TFF)"
   },
+  "keywords": [
+    "cftc",
+    "cot",
+    "futures",
+    "positioning",
+    "managed-money",
+    "hedge-funds",
+    "commodities",
+    "free-data"
+  ],
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "node --test '*.test.ts'",
     "package": "node scripts/package.mjs"
   },
   "devDependencies": {
-    "@jaspers-ai/sdk": "^0.3.0",
+    "@jaspers-ai/sdk": "0.8.0",
     "@types/node": "^24.13.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
     "typescript": "^7.0.2",
     "zod": "^4.6.5"
   }
